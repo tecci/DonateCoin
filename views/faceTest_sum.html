@@ -32,13 +32,13 @@
 
         // 5초뒤에 실행
         setTimeout(function() {
+
             // getData경로에서 찍은 사진 경로를 json데이터로 가져옴
             $.getJSON("/takep/getData", function(result){
                 //경로확인용 알럿창
-                alert("result" + result.msg);
+                // alert("result" + result.msg);
                 // 그 경로를 브라우저에 띄워줌
                 $("#targetImage").attr("src", '/takep/photo');
-                $("#targetImage").attr("src", result.msg);
 
             });
 
@@ -46,10 +46,10 @@
 
         //클릭이벤트는 도큐먼트가 레디 되었을 때 실행해야함
         //버튼을 누르면
-        $("#testButton").on("click", function(){
-
+        // $("#testButton").on("click", function(){
+        setTimeout(function() {
             //targetImage 가져오기
-            var img = document.querySelector("#targetImage");  
+            var img = document.querySelector("#targetImage");
 
             //canvas 객체 생성
             var canvas = document.createElement("canvas");
@@ -76,8 +76,8 @@
             //이 데이타를 processImage에 파라미터로 넘겨서 Face API 실행
             processImage(dataURL);
 
-        });
-    })
+        }, 3000);
+    });
 
     //Face API 실행 함수
     function processImage(dataURL) {
@@ -114,14 +114,47 @@
                 console.log(JSON.parse(xhr.responseText));
                 var emo = JSON.parse(xhr.responseText)[0].faceAttributes.emotion;
                 console.log(emo.happiness);
-
-                if(emo.happiness>emo.sadness){
+                //
+                // var emos = {emo.anger, emo.contempt, emo.disgust, emo.fear, emo.happiness, emo.neutral, emo.sadness, emo.surprise };
+                //
+                // var maxEmo = Math.max.apply(null, emos);
+                // switch(maxEmo){
+                //     case emos[0] :
+                //         $("#resultEmo").append(" 화남");
+                //         break;
+                //     case emos[1] :
+                //         $("#resultEmo").append(" 경멸");
+                //         break;
+                //     case emos[2] :
+                //         $("#resultEmo").append(" 혐오");
+                //         break;
+                //     case emos[3] :
+                //         $("#resultEmo").append(" 두려움");
+                //         break;
+                //     case emos[4] :
+                //         $("#resultEmo").append(" 행복");
+                //         break;
+                //     case emos[5] :
+                //         $("#resultEmo").append(" 중립");
+                //         break;
+                //     case emos[6] :
+                //         $("#resultEmo").append(" 슬픔");
+                //         break;
+                //     case emos[7] :
+                //         $("#resultEmo").append(" 놀람");
+                //         break;
+                // }
+                if(JSON.parse(xhr.responseText)[0].faceAttributes === undefined){
+                    $("#resultEmo").append(" 얼굴이 잘 안나왔어욤 ㅠ");
+                }else if(emo.happiness > emo.sadness){
                     console.log("행복");
                     $("#resultEmo").append(" 행복합니다~~");
-                }
-                if(emo.happiness<emo.sadness){
+                }else if(emo.happiness < emo.sadness){
                     $("#resultEmo").append(" 슬퍼요 ㅠ.ㅜ");
+                }else{
+                    console.log("힝..여기는 들어올일이 없는데..");
                 }
+
             }
         };
         //여기서 Blob 이미지 데이터를 보냄

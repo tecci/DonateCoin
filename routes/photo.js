@@ -30,8 +30,8 @@ function take_photo(err,state){
         led.writeSync(1);
         console.log('on');
         // 사진 저장되는 경로를 실제 경로로 바꿔주었음(강사님이 바꾸신 부분은 아님)
-        photo_path = "/home/pi/main_prj/ex_wc_bt_test2/public/photo/" + dateFormat(now, "isoDateTime") + '.jpg';
-        cmd_photo = 'fswebcam --no-banner ' + photo_path;
+        photo_path = "/home/pi/main_prj/ex_wc_bt_test2/public/photo/" + dateFormat(now, "yyyymmddhhMM") + '.jpg';
+        cmd_photo = 'fswebcam --no-banner -S 6 -F 2 720x480 ' + photo_path;
 
         console.log('cmd_photo : ',cmd_photo );
         exec_photo(cmd_photo,function(error, stdout, stderr){
