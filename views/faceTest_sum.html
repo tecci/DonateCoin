@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>합치기 테스트 중</title>
+    <link rel="stylesheet" href="/css/style.css" charset="utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+</head>
+<body>
+<h1 id="resultEmo">감정:</h1>
+<div id="wrapper" style="width:1020px; display:table;">
+    <div id="jsonOutput" style="width:600px; display:table-cell;">
+        Response:
+        <br><br>
+        <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
+    </div>
+
+    <div>
+        <!--testButton을 누르면 이미지 파일을 마소로 보냄-->
+        <button id="testButton">Test Button</button>
+        <img id="targetImage"/>
+    </div>
+
+    <img id="resultTest" >
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+
+        // 5초뒤에 실행
+        setTimeout(function() {
+            // getData경로에서 찍은 사진 경로를 json데이터로 가져옴
+            $.getJSON("/takep/getData", function(result){
+                //경로확인용 알럿창
+                alert("result" + result.msg);
+                // 그 경로를 브라우저에 띄워줌
+                $("#targetImage").attr("src", '/takep/photo');
+                $("#targetImage").attr("src", result.msg);
+
+            });
+
+        }, 5000);
+
+        //클릭이벤트는 도큐먼트가 레디 되었을 때 실행해야함
+        //버튼을 누르면
+        $("#testButton").on("click", function(){
+
+            //targetImage 가져오기
+            var img = document.querySelector("#targetImage");
+
+            //canvas 객체 생성
+            var canvas = document.createElement("canvas");
+
+            //canvas 객체의 넓이, 높이를 img와 매치
+            canvas.width = img.width;
+            canvas.height = img.height;
+
+            // Copy the image contents to the canvas
+            var ctx = canvas.getContext("2d");
+
+            //canvas에 이미지 그리기, 0, 0,300,300 다 설정해줘야함
+            //https://www.w3schools.com/tags/canvas_getimagedata.asp 에 파라미터 설명있음
+            ctx.drawImage(img, 0, 0,300,300);
+
+            // Get the data-URL formatted image
+            // Firefox supports PNG and JPEG. You could check img.src to
+            // guess the original format, but be aware the using "image/jpg"
+            // will re-encode the image.
+            //resultTest img 태그에 canvas 객체가 제대로 변환됐는지 확인
+            $("#resultTest").attr("src", canvas.toDataURL('image/jpg'));
+            //이미지가 나오는지 확인되면 제대로 만들어 진 것
+            var dataURL = canvas.toDataURL('image/jpg');
+            //이 데이타를 processImage에 파라미터로 넘겨서 Face API 실행
+            processImage(dataURL);
+
+        });
+    })
+
+    //Face API 실행 함수
+    function processImage(dataURL) {
+
+        // Replace the subscriptionKey string value with your valid subscription key.
+        var subscriptionKey = "dabc3e9d0b9b443ba824806015f4aa0c";
+        // EndPoint
+        var uriBase = "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+
+        // Request parameters.
+        //이 예제에서는 사용안하지만, 안에 내용은 xhr.open의 URL에 paramStr에 붙여서 사용함
+        var params = {
+            "returnFaceId": "false",
+            "returnFaceLandmarks": "false",
+            "returnFaceAttributes": "age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise",
+        };
+        // 결과값으로 받을 옵션 쿼리
+        var paramStr = "returnFaceAttributes=age,gender,emotion,smile&returnFaceId=true";
+
+        //Base64로 인코딩된 이미지 데이타를 dataURL을 Blob로 바꿔줌
+        var resultData = dataURItoBlob(dataURL);
+
+        // Face API 실행 코드
+        var xhr = new XMLHttpRequest();
+        //로드 되면 실행되는 것(여기에 결과값을 처리하는 코드 작성하면 될 듯
+        xhr.onload = function(result) { console.log(result);  };
+        // FaceAPI 호출할 URL과 결과값 옵션
+        xhr.open('POST', uriBase+'?'+ paramStr);
+        xhr.setRequestHeader("Content-Type", "application/octet-stream");
+        xhr.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                //JSON 결과값
+                console.log(JSON.parse(xhr.responseText));
+                var emo = JSON.parse(xhr.responseText)[0].faceAttributes.emotion;
+                console.log(emo.happiness);
+
+                if(emo.happiness>emo.sadness){
+                    console.log("행복");
+                    $("#resultEmo").append(" 행복합니다~~");
+                }
+                if(emo.happiness<emo.sadness){
+                    $("#resultEmo").append(" 슬퍼요 ㅠ.ㅜ");
+                }
+            }
+        };
+        //여기서 Blob 이미지 데이터를 보냄
+        xhr.send(resultData);
+
+    };
+
+    //Base64로 인코딩된 이미지 데이터를 Blob 데이터로 바꾸는 함수
+    function dataURItoBlob(dataURI) {
+        // convert base64 to raw binary data held in a string
+        // doesn't handle URLEncoded DataURIs - see SO answer #6850276 for code that does this
+        var byteString = atob(dataURI.split(',')[1]);
+
+        // separate out the mime component
+        var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+
+        // write the bytes of the string to an ArrayBuffer
+        var ab = new ArrayBuffer(byteString.length);
+
+        // create a view into the buffer
+        var ia = new Uint8Array(ab);
+
+        // set the bytes of the buffer to the correct values
+        for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+
+        // write the ArrayBuffer to a blob, and you're done
+        var blob = new Blob([ab], {type: mimeString});
+
+        return blob;
+
+    }
+</script>
+
+</body>
+</html>
