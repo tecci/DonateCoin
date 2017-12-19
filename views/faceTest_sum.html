@@ -36,7 +36,6 @@ alert("1");
                 //경로확인용 알럿창
                 // alert("result" + result.msg);
                 // 그 경로를 브라우저에 띄워줌
-<<<<<<< HEAD
                 $("#targetImage").attr("src", '/takep/photo')
                     .load(function () {
                         var img = document.querySelector("#targetImage");
@@ -66,28 +65,23 @@ alert("1");
                         //이 데이타를 processImage에 파라미터로 넘겨서 Face API 실행
                         processImage(dataURL);
                     })
-=======
                 $("#targetImage").attr("src", '/takep/photo');
 
->>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
             });
         }, 3000);
 
         //클릭이벤트는 도큐먼트가 레디 되었을 때 실행해야함
         //버튼을 누르면
-<<<<<<< HEAD
         // $("#testButton").on("click", function() {
             setTimeout(function() {
             //targetImage 가져오기
             var img = document.querySelector("#targetImage");
             alert("3");
-=======
         // $("#testButton").on("click", function(){
         setTimeout(function() {
             //targetImage 가져오기
             var img = document.querySelector("#targetImage");
 
->>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
             //canvas 객체 생성
             var canvas = document.createElement("canvas");
 
@@ -113,14 +107,10 @@ alert("1");
             //이 데이타를 processImage에 파라미터로 넘겨서 Face API 실행
             processImage(dataURL);
 
-<<<<<<< HEAD
          }, 3000);
-=======
         }, 3000);
     });
->>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
 
-});
     //Face API 실행 함수
     function processImage(dataURL) {
 
@@ -156,8 +146,7 @@ alert("1");
                 console.log(JSON.parse(xhr.responseText));
                 var emo = JSON.parse(xhr.responseText)[0].faceAttributes.emotion;
                 console.log(emo.happiness);
-<<<<<<< HEAD
-                
+
                  var emos = [emo.anger, emo.contempt, emo.disgust, emo.fear, emo.happiness, emo.sadness, emo.surprise];
                 
                  var maxEmo = Math.max.apply(null, emos);
@@ -188,7 +177,6 @@ alert("1");
 			 break;
                  }
                 
-=======
                 //
                 // var emos = {emo.anger, emo.contempt, emo.disgust, emo.fear, emo.happiness, emo.neutral, emo.sadness, emo.surprise };
                 //
@@ -229,7 +217,7 @@ alert("1");
                 }else{
                     console.log("힝..여기는 들어올일이 없는데..");
                 }
->>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
+
 
             }
         };
