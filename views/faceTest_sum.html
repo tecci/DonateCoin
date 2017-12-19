@@ -1,56 +1,79 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>합치기 테스트 중</title>
-    <link rel="stylesheet" href="/css/style.css" charset="utf-8">
+    <!--    <link rel="stylesheet" href="/css/style.css" charset="utf-8"> -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
 </head>
 <body>
+
+
+<video id="video" preload="auto" autoplay="true" style="position:absolute">
+    <source src="campaign.mp4">
+</video>
+
 <h1 id="resultEmo">감정:</h1>
-<div id="wrapper" style="width:1020px; display:table;">
-    <div id="jsonOutput" style="width:600px; display:table-cell;">
-        Response:
-        <br><br>
-        <textarea id="responseTextArea" class="UIInput" style="width:580px; height:400px;"></textarea>
-    </div>
+<div id="wrapper">
+
 
     <div>
-        <!--testButton을 누르면 이미지 파일을 마소로 보냄-->
-        <button id="testButton">Test Button</button>
-        <img id="targetImage"/>
+         <img id="targetImage" style="display: none" />
     </div>
 
-    <img id="resultTest" >
+    <img id="resultTest" />
 
 </div>
-
 <script type="text/javascript">
-
-    $(document).ready(function(){
-
+$(document).ready(function(){
         // 5초뒤에 실행
+alert("1");
         setTimeout(function() {
             // getData경로에서 찍은 사진 경로를 json데이터로 가져옴
-            $.getJSON("/takep/getData", function(result){
+            $.getJSON("/takep/getData", function (result) {
                 //경로확인용 알럿창
-                alert("result" + result.msg);
+                // alert("result" + result.msg);
                 // 그 경로를 브라우저에 띄워줌
-                $("#targetImage").attr("src", '/takep/photo');
-                $("#targetImage").attr("src", result.msg);
+                $("#targetImage").attr("src", '/takep/photo')
+                    .load(function () {
+                        var img = document.querySelector("#targetImage");
+                        alert("2");
+                        //canvas 객체 생성
+                        var canvas = document.createElement("canvas");
 
+                        //canvas 객체의 넓이, 높이를 img와 매치
+                        canvas.width = img.width;
+                        canvas.height = img.height;
+
+                        // Copy the image contents to the canvas
+                        var ctx = canvas.getContext("2d");
+
+                        //canvas에 이미지 그리기, 0, 0,300,300 다 설정해줘야함
+                        //https://www.w3schools.com/tags/canvas_getimagedata.asp 에 파라미터 설명있음
+                        ctx.drawImage(img, 0, 0, 300, 300);
+
+                        // Get the data-URL formatted image
+                        // Firefox supports PNG and JPEG. You could check img.src to
+                        // guess the original format, but be aware the using "image/jpg"
+                        // will re-encode the image.
+                        //resultTest img 태그에 canvas 객체가 제대로 변환됐는지 확인
+                        $("#resultTest").attr("src", canvas.toDataURL('image/jpg'));
+                        //이미지가 나오는지 확인되면 제대로 만들어 진 것
+                        var dataURL = canvas.toDataURL('image/jpg');
+                        //이 데이타를 processImage에 파라미터로 넘겨서 Face API 실행
+                        processImage(dataURL);
+                    })
             });
-
-        }, 5000);
+        }, 3000);
 
         //클릭이벤트는 도큐먼트가 레디 되었을 때 실행해야함
         //버튼을 누르면
-        $("#testButton").on("click", function(){
-
+        // $("#testButton").on("click", function() {
+            setTimeout(function() {
             //targetImage 가져오기
-            var img = document.querySelector("#targetImage");  
-
+            var img = document.querySelector("#targetImage");
+            alert("3");
             //canvas 객체 생성
             var canvas = document.createElement("canvas");
 
@@ -63,7 +86,7 @@
 
             //canvas에 이미지 그리기, 0, 0,300,300 다 설정해줘야함
             //https://www.w3schools.com/tags/canvas_getimagedata.asp 에 파라미터 설명있음
-            ctx.drawImage(img, 0, 0,300,300);
+            ctx.drawImage(img, 0, 0, 300, 300);
 
             // Get the data-URL formatted image
             // Firefox supports PNG and JPEG. You could check img.src to
@@ -76,9 +99,9 @@
             //이 데이타를 processImage에 파라미터로 넘겨서 Face API 실행
             processImage(dataURL);
 
-        });
-    })
+         }, 3000);
 
+});
     //Face API 실행 함수
     function processImage(dataURL) {
 
@@ -114,18 +137,45 @@
                 console.log(JSON.parse(xhr.responseText));
                 var emo = JSON.parse(xhr.responseText)[0].faceAttributes.emotion;
                 console.log(emo.happiness);
+                
+                 var emos = [emo.anger, emo.contempt, emo.disgust, emo.fear, emo.happiness, emo.sadness, emo.surprise];
+                
+                 var maxEmo = Math.max.apply(null, emos);
+                 switch(maxEmo){
+                     case emos[0] :
+                         $("#resultEmo").append(" 화남");
+                         break;
+                     case emos[1] :
+                         $("#resultEmo").append(" 경멸");
+                         break;
+                     case emos[2] :
+                         $("#resultEmo").append(" 혐오");
+                         break;
+                     case emos[3] :
+                         $("#resultEmo").append(" 두려움");
+                         break;
+                     case emos[4] :
+                         $("#resultEmo").append(" 행복");
+                         break;
+  	             case emos[5] :
+                         $("#resultEmo").append(" 슬픔");
+                         break;
+                     case emos[6] :
+                         $("#resultEmo").append(" 놀람");
+                         break;
+		     default :
+			 $("#resultEmo").append(" 중립 ");
+			 break;
+                 }
+                
 
-                if(emo.happiness>emo.sadness){
-                    console.log("행복");
-                    $("#resultEmo").append(" 행복합니다~~");
-                }
-                if(emo.happiness<emo.sadness){
-                    $("#resultEmo").append(" 슬퍼요 ㅠ.ㅜ");
-                }
             }
         };
+
+         
         //여기서 Blob 이미지 데이터를 보냄
         xhr.send(resultData);
+        $("#video").hide(10000);
 
     };
 

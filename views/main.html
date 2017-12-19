@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<style>
+    #video {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1;
+        overflow: hidden;
+    }
+</style>
+</head>
+
+<body>
+
+<video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+    <source src="movie.mp4">
+</video>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script>
+    var check = setInterval(function(){
+        $.getJSON("/check", function(result){
+            if(result.check === 'ok'){
+                alert(result.check);
+                location.href = "/takep";
+                clearInterval(check);
+            }
+        });
+    }, 1000);
+</script>
+</body>
+</html>
