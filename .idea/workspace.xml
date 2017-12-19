@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/views/faceTest_sum.html" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d3687309-61b3-4cf9-b6d1-d773040ed3e7" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -17,6 +20,7 @@
       <file leaf-file-name="faceTest_sum.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/faceTest_sum.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="380">
               <caret line="177" column="8" lean-forward="false" selection-start-line="177" selection-start-column="8" selection-end-line="177" selection-end-column="8" />
               <folding>
@@ -42,6 +46,13 @@
             <state relative-caret-position="238">
               <caret line="19" column="19" lean-forward="false" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
               <folding />
+=======
+            <state relative-caret-position="245">
+              <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+              <folding>
+                <element signature="e#4178#4180#0" expanded="false" />
+              </folding>
+>>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
             </state>
           </provider>
         </entry>
@@ -49,8 +60,13 @@
       <file leaf-file-name="photo.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/photo.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="304">
               <caret line="73" column="15" lean-forward="true" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
+=======
+            <state relative-caret-position="-912">
+              <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+>>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
               <folding />
             </state>
           </provider>
@@ -59,6 +75,7 @@
       <file leaf-file-name="www" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/www">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="532">
               <caret line="36" column="28" lean-forward="false" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
               <folding />
@@ -71,6 +88,10 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="475">
               <caret line="25" column="3" lean-forward="false" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+=======
+            <state relative-caret-position="380">
+              <caret line="20" column="53" lean-forward="true" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
+>>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
               <folding />
             </state>
           </provider>
@@ -93,10 +114,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/routes/photo_backup.js" />
-        <option value="$PROJECT_DIR$/bin/www" />
         <option value="$PROJECT_DIR$/app.js" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/views/main.html" />
         <option value="$PROJECT_DIR$/routes/main.js" />
+=======
+        <option value="$PROJECT_DIR$/routes/photo.js" />
+        <option value="$PROJECT_DIR$/bin/www" />
+>>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
         <option value="$PROJECT_DIR$/views/faceTest_sum.html" />
         <option value="$PROJECT_DIR$/routes/photo.js" />
       </list>
@@ -114,8 +139,13 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+<<<<<<< HEAD
     <option name="x" value="438" />
     <option name="y" value="-16" />
+=======
+    <option name="x" value="154" />
+    <option name="y" value="21" />
+>>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
     <option name="width" value="1302" />
     <option name="height" value="1056" />
   </component>
@@ -140,6 +170,7 @@
         <subPane>
           <expand>
             <path>
+<<<<<<< HEAD
               <item name="donateCoinHJ" type="b2602c69:ProjectViewProjectNode" />
               <item name="donateCoinHJ" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -156,6 +187,24 @@
             <path>
               <item name="donateCoinHJ" type="b2602c69:ProjectViewProjectNode" />
               <item name="donateCoinHJ" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="donateCoin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="donateCoin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="donateCoin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="donateCoin" type="462c0819:PsiDirectoryNode" />
+              <item name="bin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="donateCoin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="donateCoin" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="donateCoin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="donateCoin" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -224,14 +273,23 @@
       <workItem from="1513157442413" duration="532000" />
       <workItem from="1513212627137" duration="1036000" />
       <workItem from="1513213677672" duration="53000" />
+<<<<<<< HEAD
       <workItem from="1513213802308" duration="3740000" />
       <workItem from="1513591046876" duration="24000" />
       <workItem from="1513643106035" duration="6204000" />
+=======
+      <workItem from="1513213802308" duration="3841000" />
+      <workItem from="1513218234454" duration="3558000" />
+>>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="31056000" />
+=======
+    <option name="totallyTimeSpent" value="28487000" />
+>>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -364,8 +422,27 @@
         <state relative-caret-position="2508">
           <caret line="132" column="53" lean-forward="false" selection-start-line="132" selection-start-column="53" selection-end-line="132" selection-end-column="53" />
           <folding>
+<<<<<<< HEAD
             <element signature="n#style#0;n#video#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+=======
+            <element signature="e#4178#4180#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="6" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="6" selection-end-column="3" />
+>>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
         </state>
       </provider>
     </entry>
@@ -453,6 +530,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/views/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
@@ -468,22 +546,49 @@
           <folding>
             <element signature="n#style#0;n#video#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="34" column="19" lean-forward="true" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="53" lean-forward="true" selection-start-line="20" selection-start-column="53" selection-end-line="20" selection-end-column="53" />
+          <folding />
+>>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/main.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="475">
           <caret line="25" column="3" lean-forward="false" selection-start-line="25" selection-start-column="3" selection-end-line="25" selection-end-column="3" />
+=======
+        <state relative-caret-position="-912">
+          <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="2" />
+>>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/photo.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="304">
           <caret line="73" column="15" lean-forward="true" selection-start-line="73" selection-start-column="15" selection-end-line="73" selection-end-column="15" />
           <folding />
+=======
+        <state relative-caret-position="245">
+          <caret line="39" column="34" lean-forward="true" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
+          <folding>
+            <element signature="e#4178#4180#0" expanded="false" />
+          </folding>
+>>>>>>> 653d7e1193d293e1716ad3551cb95f2fd333868b
         </state>
       </provider>
     </entry>
